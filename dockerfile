@@ -13,7 +13,7 @@ COPY . ${WILDFLY_HOME}/
 WORKDIR ${WILDFLY_HOME}
 
 # Ajustar permissões
-RUN chmod -R 775 ${WILDFLY_HOME}/standalone/configuration
+RUN chmod -R 775 ${WILDFLY_HOME}
 
 # Expor as portas do WildFly
 EXPOSE 8081 9990
