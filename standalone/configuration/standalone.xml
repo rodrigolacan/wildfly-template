@@ -783,9 +783,4 @@
             <remote-destination host="${jboss.mail.server.host:localhost}" port="${jboss.mail.server.port:25}"/>
         </outbound-socket-binding>
     </socket-binding-group>
-    <deployments>
-        <deployment name="sebrae-dev.war" runtime-name="sebrae-dev.war">
-            <fs-archive path="/home/rodrigo.lacan/Documentos/API SEBRAE RR/target/sebrae-dev.war"/>
-        </deployment>
-    </deployments>
 </server>
