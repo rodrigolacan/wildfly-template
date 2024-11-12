@@ -1,5 +1,8 @@
 FROM amazoncorretto:21
 
+# Instalar o pacote que contém useradd
+RUN yum install -y shadow-utils && yum clean all
+
 # Definir a variável de ambiente para o WildFly
 ENV WILDFLY_HOME=/opt/wildfly
 
@@ -17,7 +20,7 @@ RUN useradd -r -s /bin/false wildfly && \
 WORKDIR ${WILDFLY_HOME}
 
 # Ajustar permissões
-RUN chmod -R 775 ${WILDFLY_HOME}
+RUN chmod -R 777 ${WILDFLY_HOME}
 
 # Mudar para o usuário wildfly
 USER wildfly
