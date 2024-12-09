@@ -3,6 +3,7 @@ standalone/tmp/
 standalone/data/
 standalone/log/
 standalone/deployments/
+standalone/configuration/standalone_xml_history
 
 # Arquivos de configuração específicos de ambiente
 standalone/configuration/*.bak
