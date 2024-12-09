@@ -1,0 +1,39 @@
+# Diretórios temporários e de cache
+standalone/tmp/
+standalone/data/
+standalone/log/
+standalone/deployments/
+
+# Arquivos de configuração específicos de ambiente
+standalone/configuration/*.bak
+standalone/configuration/*.orig
+
+# Arquivos gerados pelo WildFly
+standalone/tmp/*
+standalone/data/*
+standalone/log/*
+
+# Arquivos de instalação ou binários
+standalone/lib/*.jar
+standalone/lib/*.tar.gz
+standalone/lib/*.zip
+
+# Logs de execução
+standalone/log/*.log
+
+# Arquivos do Maven (se você usar no WildFly)
+**/target/
+**/build/
+
+# Arquivos específicos de IDEs
+.idea/
+.vscode/
+*.iml
+
+# Arquivos de backup
+*~
+*.swp
+
+# Outros arquivos temporários do sistema operacional
+.DS_Store
+Thumbs.db
