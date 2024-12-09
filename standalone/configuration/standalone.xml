@@ -395,6 +395,17 @@
                         <validate-on-match>true</validate-on-match>
                     </validation>
                 </datasource>
+                <datasource jndi-name="java:/datasources/ApropriacaoReceitasService" pool-name="ApropriacaoReceitasService">
+                    <connection-url>jdbc:postgresql://10.23.4.92:5432/apropriacao-receitas-service</connection-url>
+                    <driver-class>org.postgresql.Driver</driver-class>
+                    <driver>postgres</driver>
+                    <security user-name="apropriacao.receitas" password="66/2&lt;k5DC2[I"/>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <validate-on-match>true</validate-on-match>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
@@ -402,6 +413,9 @@
                     <driver name="sqlserver" module="com.microsoft.sqlserver">
                         <driver-class>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver-class>
                         <xa-datasource-class>com.microsoft.sqlserver.jdbc.SQLServerXADataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="postgres" module="org.postgresql">
+                        <driver-class>org.postgresql.Driver</driver-class>
                     </driver>
                 </drivers>
             </datasources>
@@ -783,4 +797,9 @@
             <remote-destination host="${jboss.mail.server.host:localhost}" port="${jboss.mail.server.port:25}"/>
         </outbound-socket-binding>
     </socket-binding-group>
+    <deployments>
+        <deployment name="sebrae-dev.war" runtime-name="sebrae-dev.war">
+            <fs-archive path="/home/rodrigo.lacan/Documentos/API SEBRAE RR/target/sebrae-dev.war"/>
+        </deployment>
+    </deployments>
 </server>
