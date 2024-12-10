@@ -613,14 +613,23 @@
                         <implementation type="JKS"/>
                         <file path="application.keystore" relative-to="jboss.server.config.dir"/>
                     </key-store>
+                    <key-store name="httpsKS">
+                        <credential-reference clear-text="asdf123"/>
+                        <implementation type="JKS"/>
+                        <file path="wildfly-keystore.jks" relative-to="jboss.server.config.dir"/>
+                    </key-store>
                 </key-stores>
                 <key-managers>
                     <key-manager name="applicationKM" key-store="applicationKS" generate-self-signed-certificate-host="localhost">
                         <credential-reference clear-text="password"/>
                     </key-manager>
+                    <key-manager name="httpsKM" key-store="httpsKS">
+                        <credential-reference clear-text="asdf123"/>
+                    </key-manager>
                 </key-managers>
                 <server-ssl-contexts>
                     <server-ssl-context name="applicationSSC" key-manager="applicationKM"/>
+                    <server-ssl-context name="httpsSSC" protocols="TLSv1.2 TLSv1.3" key-manager="httpsKM"/>
                 </server-ssl-contexts>
             </tls>
             <policy name="jacc">
@@ -748,7 +757,7 @@
             <buffer-cache name="default"/>
             <server name="default-server">
                 <http-listener name="default" socket-binding="http" redirect-socket="https" enable-http2="true"/>
-                <https-listener name="https" socket-binding="https" ssl-context="applicationSSC" enable-http2="true"/>
+                <https-listener name="https" socket-binding="https" ssl-context="httpsSSC" enable-http2="true"/>
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content"/>
                     <http-invoker http-authentication-factory="application-http-authentication"/>
@@ -779,7 +788,7 @@
     </profile>
     <interfaces>
         <interface name="management">
-            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
+            <inet-address value="${jboss.bind.address.management:0.0.0.0}"/>
         </interface>
         <interface name="public">
             <inet-address value="${jboss.bind.address:0.0.0.0}"/>
