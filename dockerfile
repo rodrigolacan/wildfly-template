@@ -16,7 +16,7 @@ WORKDIR ${WILDFLY_HOME}
 RUN chmod -R 777 ${WILDFLY_HOME}
 
 # Expor as portas do WildFly
-EXPOSE 8081 9990
+EXPOSE 8080 9990
 
 # Comando para iniciar o WildFly
 CMD ["bin/standalone.sh", "-b", "0.0.0.0", "-Djboss.http.port=8080"]
